@@ -12,8 +12,8 @@ class EseFlowContainer : public FlowContainer {
     ~EseFlowContainer();
     
     void SetEseRebin() {
-      fEseRebin = 5; // default value
-      fEseRebinEdges = new double[6]{0, 20, 40, 60, 80, 100};
+      fEseRebin = 10; // default value
+      fEseRebinEdges = new double[11]{0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     }
     void SetEseRebin(int nbins, double* binedges) {
       fEseRebin = nbins;
@@ -29,7 +29,9 @@ class EseFlowContainer : public FlowContainer {
     double *fEseRebinEdges = nullptr; //! do not store, used for ESE analysis
     TObjArray* fProfEse = nullptr; 
     TProfile2D* fMainProf = nullptr;
-
+    const int fNPtBins = 27;
+    
+    void EFBinner(int ir, int ese_lo, int ese_hi, const TString& label, TProfile2D* newProf);
 
   ClassDef(EseFlowContainer, 1);
 };
