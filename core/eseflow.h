@@ -2,7 +2,7 @@
 
 #include "FlowContainer.h"
 
-
+namespace gfwe {
 
 class EseFlowContainer : public FlowContainer {
   public:
@@ -23,17 +23,24 @@ class EseFlowContainer : public FlowContainer {
     void EseRebin(bool ptint = 1);
     TObjArray* GetEseProf() const { return fProfEse; }
     void SetMainProf() { fProf = fMainProf; }
+    TProfile2D* GetMainProf() const { return fMainProf; }
+    void SetProf(TProfile2D* prof) { 
+      fProf = prof;
+    }
+
 
   private:
-    int fEseRebin = -1; //! do not store, used for ESE analysis
-    double *fEseRebinEdges = nullptr; //! do not store, used for ESE analysis
+    int fEseRebin = -1; //! do not store
+    double *fEseRebinEdges = nullptr; //! do not store
     TObjArray* fProfEse = nullptr; 
     TProfile2D* fMainProf = nullptr;
-    const int fNPtBins = 27;
+    const int fNPtBins = 28;
     
-    void EFBinner(int ir, int ese_lo, int ese_hi, const TString& label, TProfile2D* newProf);
+    void EFBinner(int ir, int ese_lo, int ese_hi, const TString& l_name, TProfile2D* newProf);
+    void EFBinnerPt(int ir, int ese_lo, int ese_hi, const TString& l_name, int ptbin, TProfile2D* newProf);
 
   ClassDef(EseFlowContainer, 1);
 };
 
+} // namespace gfwe
 
