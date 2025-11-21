@@ -11,7 +11,10 @@
   TString fIDName = "ese_10_ChGap";
   fc->SetIDName(fIDName);
 
-  auto vn2 = fc->GetVNN(2, 2, true, 0, 20);
+  // fc->CreateStatisticsProfile(FlowContainer::StatisticsType::kJackKnife, 0);
+  fc->SetPropagateErrors(true);
+
+  auto vn2 = fc->GetVNN(2, 2, true, 10, 20);
 
 
 }

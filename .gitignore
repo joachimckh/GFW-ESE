@@ -45,3 +45,8 @@
 *.swo
 *.un~
 *~
+
+/figs
+/files
+
+.DS_Store
